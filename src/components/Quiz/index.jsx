@@ -1,6 +1,7 @@
 import { useState } from "react";
 import styleQuiz from "./styles.module.css";
 import { Answer } from "../Answer";
+import { Button } from "../Button";
 
 const QUESTIONS_MOCK = [
   {
@@ -24,10 +25,10 @@ const QUESTIONS_MOCK = [
 ];
 
 export function Quiz() {
-  const currentQuestion = QUESTIONS_MOCK[0];
-
-  const [correctAnswerCounter, setCounter] = useState(0);
+  const [questionIndex, setQuestionIndex] = useState(0);
+  const [correctAnswerCounter, setcorrectAnswerCounter] = useState(0);
   const [isQuestionAnswered, setIsQuestionAnswered] = useState(false);
+  const currentQuestion = QUESTIONS_MOCK[questionIndex];
 
   function checkAnswer(event, question, answer) {
     if (!isQuestionAnswered) {
@@ -38,10 +39,17 @@ export function Quiz() {
 
       if (isCorrectAnswer) {
         setIsQuestionAnswered(true);
-        setCounter(correctAnswerCounter + 1);
+        setcorrectAnswerCounter((counter) => counter + 1);
       }
 
       event.target.classList.toggle(resultClassName);
+    }
+  }
+
+  function nextQuestion() {
+    if (questionIndex + 1 < QUESTIONS_MOCK.length) {
+      setQuestionIndex((index) => index + 1);
+      setIsQuestionAnswered(false);
     }
   }
 
@@ -67,6 +75,9 @@ export function Quiz() {
               </li>
             ))}
           </ul>
+          {isQuestionAnswered && (
+            <Button onClick={nextQuestion}>Próxima pergunta</Button>
+          )}
         </div>
       </div>
     </div>
