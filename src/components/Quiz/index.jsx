@@ -3,6 +3,7 @@ import styleQuiz from "./styles.module.css";
 import { Answer } from "../Answer";
 import { Button } from "../Button";
 import { Result } from "../QuizResult";
+import { ProgressBar } from "../ProgressBar";
 
 const QUESTIONS_MOCK = [
   {
@@ -75,6 +76,10 @@ export function Quiz() {
       <div className={styleQuiz.card}>
         {!isFinishedQuiz ? (
           <div className={styleQuiz.quiz}>
+            <ProgressBar
+              currentStep={questionIndex + 1}
+              maxQuestions={QUESTIONS_MOCK.length}
+            />
             <header className={styleQuiz.quizHeader}>
               <span className={styleQuiz.questionCount}>
                 PERGUNTA {questionIndex + 1}/{QUESTIONS_MOCK.length}
