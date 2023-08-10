@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { MouseEvent, useState } from "react";
 import styleQuiz from "./styles.module.css";
 import { Answer } from "../Answer";
 import { Button } from "../Button";
@@ -26,6 +26,13 @@ const QUESTIONS_MOCK = [
   },
 ];
 
+export interface Question {
+  id: number;
+  question: string;
+  answers: Array<string>;
+  correctAnswer: string;
+}
+
 export function Quiz() {
   const [questionIndex, setQuestionIndex] = useState(0);
   const [correctAnswerCounter, setcorrectAnswerCounter] = useState(0);
@@ -33,7 +40,11 @@ export function Quiz() {
   const currentQuestion = QUESTIONS_MOCK[questionIndex];
   const [isFinishedQuiz, setIsFinishedQuiz] = useState(false);
 
-  function checkAnswer(event, question, answer) {
+  function checkAnswer(
+    event: MouseEvent<HTMLButtonElement>,
+    question: Question,
+    answer: string
+  ) {
     if (!isQuestionAnswered) {
       const isCorrectAnswer = question.correctAnswer === answer;
       const resultClassName = isCorrectAnswer
@@ -45,7 +56,7 @@ export function Quiz() {
       }
 
       setIsQuestionAnswered(true);
-      event.target.classList.toggle(resultClassName);
+      event.currentTarget.classList.toggle(resultClassName);
     }
   }
 

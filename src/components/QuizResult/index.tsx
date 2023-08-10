@@ -1,8 +1,18 @@
-import PropTypes from "prop-types";
+// import PropTypes from "prop-types";
 import stylesQuizResult from "./styles.module.css";
 import { Button } from "../Button";
 
-export function Result({ correctAnswersCount, maxQuestions, onClick }) {
+interface QuizResultProps {
+  correctAnswersCount: number;
+  maxQuestions: number;
+  onClick: () => void;
+}
+
+export function Result({
+  correctAnswersCount,
+  maxQuestions,
+  onClick,
+}: QuizResultProps) {
   return (
     <div className={stylesQuizResult.container}>
       <h1 className={stylesQuizResult.title}>Resultado</h1>
@@ -14,8 +24,8 @@ export function Result({ correctAnswersCount, maxQuestions, onClick }) {
   );
 }
 
-Result.propTypes = {
-  correctAnswersCount: PropTypes.number,
-  maxQuestions: PropTypes.number,
-  onClick: PropTypes.func,
-};
+// Result.propTypes = {
+//   correctAnswersCount: PropTypes.number,
+//   maxQuestions: PropTypes.number,
+//   onClick: PropTypes.func,
+// };

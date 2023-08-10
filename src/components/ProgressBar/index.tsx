@@ -2,7 +2,12 @@ import PropTypes from "prop-types";
 import classNames from "classnames";
 import stylesProgressBar from "./styles.module.css";
 
-export function ProgressBar({ maxQuestions, currentStep }) {
+interface ProgressBarProps {
+  maxQuestions: number;
+  currentStep: number;
+}
+
+export function ProgressBar({ maxQuestions, currentStep }: ProgressBarProps) {
   const progressBarSteps = Array.from(
     { length: maxQuestions },
     (_, index) => index + 1
@@ -32,7 +37,7 @@ export function ProgressBar({ maxQuestions, currentStep }) {
   );
 }
 
-ProgressBar.propTypes = {
-  currentStep: PropTypes.number,
-  maxQuestions: PropTypes.number,
-};
+// ProgressBar.propTypes = {
+//   currentStep: PropTypes.number,
+//   maxQuestions: PropTypes.number,
+// };
