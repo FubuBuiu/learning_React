@@ -14,12 +14,18 @@ const QUESTIONS_MOCK = [
   },
   {
     id: 2,
+    question: "Ano em que nasci?",
+    answers: ["1990", "1995", "1999", "2000"],
+    correctAnswer: "1999",
+  },
+  {
+    id: 3,
     question: "Quantos anos Brendon tem?",
     answers: ["23", "24", "25", "26"],
     correctAnswer: "24",
   },
   {
-    id: 3,
+    id: 4,
     question: "Qual é o apelido de Brendon?",
     answers: ["Fubu", "Irineu", "Negueba", "Japa"],
     correctAnswer: "Fubu",
